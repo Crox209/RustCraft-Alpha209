@@ -1,0 +1,8 @@
+# web-build
+
+Minimal Emscripten build folder for Minecraft LCE web target.
+
+- **src/** and **data/** are copied from web-fixed; do not edit here if you want changes to persist in web-fixed.
+- Build script: `project/emscripten/build_web.ps1`. Uses emcc, expects emsdk at `../../../emsdk` (sibling of web-build).
+- Run `install_deps.ps1` first to install/activate emsdk.
+- Outputs: `index.html`, `index.js`, `index.wasm` in `project/emscripten/`.

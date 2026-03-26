@@ -1,0 +1,9 @@
+# project/emscripten
+
+Emscripten build configuration for Minecraft web target.
+
+- **build_web.ps1** – main build script. Sources `../../../emsdk/emsdk_env.ps1`, compiles `../../src/*.cpp` (excluding platform-specific), links with `mc_platform.js`, `shell.html`, preloads `../../data@/data`.
+- **mc_platform.js** – Emscripten JS library. Exposes `mcShowCreateWorldDialog`, `idbfsReady`, `syncSaves`; uses `mergeInto(LibraryManager.library, ...)`.
+- **shell.html** – Emscripten shell. Contains `{{{ SCRIPT }}}` placeholder; handles touch/mouse, pointer lock, service worker.
+- **manifest.json**, **sw.js** – PWA manifest and service worker for offline/caching.
+- Link flags: `-sASYNCIFY=1`, `-sUSE_SDL=2`, `-sLEGACY_GL_EMULATION=1`, `-lopenal`, `-lidbfs.js`, `--preload-file ../../data@/data`.
